@@ -1,25 +1,9 @@
 "use client"
 
-import { Bell, Calendar, Clock, MapPin } from "lucide-react"
+import Link from "next/link"
 import { Button } from "@/components/ui/button"
-
-export type EventType = "Racing Tournaments" | "racing" | "sports"
-export type StatusType = "coming-soon" | "opening-soon" | "high-demand"
-
-export interface TravelPackage {
-    id: string
-    title: string
-    eventType?: EventType
-    status?: StatusType
-    image: string
-    location: {
-        city: string
-        country: string
-    }
-    dateRange: string
-    startingPrice: number
-    duration: string
-}
+import { Bell, Calendar, Clock, MapPin } from "lucide-react"
+import { TravelPackage, EventType, StatusType } from "@/types/travelPackageType"
 
 const eventTypeIcons: Record<EventType, string> = {
     concert: "🎤",
@@ -107,13 +91,15 @@ export default function UpcomingTravelCard({ package: pkg }: TravelPackageCardPr
                 </div>
 
                 {/* CTA Button */}
-                <Button
-                    variant="outline"
-                    className="mt-2 w-full gap-2 border-primary/30 text-foreground hover:bg-primary hover:text-primary-foreground bg-transparent"
-                >
-                    <Bell className="h-4 w-4" aria-hidden="true" />
-                    <span>Notify Me</span>
-                </Button>
+                <Link href={`/packages/${pkg.id}`} className="mt-2 w-full">
+                    <Button
+                        variant="outline"
+                        className="w-full gap-2 border-primary/30 text-foreground hover:bg-primary hover:text-primary-foreground bg-transparent"
+                    >
+                        <Bell className="h-4 w-4" aria-hidden="true" />
+                        <span>Notify Me</span>
+                    </Button>
+                </Link>
             </div>
         </article>
     )
