@@ -87,8 +87,8 @@ export default function UpcomingTravel() {
   }
 
   return (
-    <section className="w-full py-12 md:py-16 lg:py-20" aria-labelledby="upcoming-travel-heading">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <section className="min-h-screen bg-background px-4 mx-4 py-12 sm:px-6 lg:px-8" aria-labelledby="upcoming-travel-heading">
+      <div className="mx-auto max-w-6xl">
         {/* Header */}
         <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
           <div>
