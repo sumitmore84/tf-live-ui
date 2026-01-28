@@ -108,6 +108,15 @@ const SearchBar = () => {
       (e) => `${e.destination.city}, ${e.destination.country}`
     ) || [];
 
+
+  const matchingEvents =
+    selectedCategoryObj?.events.filter(
+      (e) =>
+        `${e.destination.city}, ${e.destination.country}` === destination
+    ) || [];
+
+  const allowedDates = generateAllowedDates(matchingEvents);
+
   const dropdownRef = useRef<HTMLDivElement>(null)
 
   // Close dropdown when clicking outside
@@ -223,23 +232,34 @@ const SearchBar = () => {
 
           <div className="hidden md:block w-[1px] h-10 bg-gray-100 mx-2" />
 
-          {/* Date Picker */}
-          <div className="w-full md:w-1/4">
+          {/* Date Dropdown */}
+          <div className="w-full md:w-1/3">
             <div className="flex items-center px-6 py-3 rounded-xl md:rounded-full hover:bg-gray-50 transition-colors">
               <div className="flex flex-col w-full">
-                <span className="text-[10px] uppercase tracking-wider text-gray-400 font-bold mb-0.5">Date</span>
-                <div className="flex items-center gap-2">
-                  <Calendar className="w-4 h-4 text-[#F17235]" />
-                  <input
-                    type="date"
-                    value={date}
-                    onChange={(e) => setDate(e.target.value)}
-                    className="w-full bg-transparent border-none focus:ring-0 text-sm font-semibold text-gray-900 outline-none cursor-pointer [color-scheme:light]"
-                  />
-                </div>
+                <span className="text-[10px] uppercase tracking-wider text-gray-400 font-bold mb-0.5">
+                  Date
+                </span>
+
+                <select
+                  value={date}
+                  onChange={(e) => setDate(e.target.value)}
+                  disabled={!destination}
+                  className="w-full bg-transparent border-none focus:ring-0 text-sm font-semibold text-gray-900 outline-none cursor-pointer"
+                >
+                  <option value="">
+                    {destination ? "Select date" : "Select destination first"}
+                  </option>
+
+                  {allowedDates.map((d) => (
+                    <option key={d} value={d}>
+                      {new Date(d).toDateString()}
+                    </option>
+                  ))}
+                </select>
               </div>
             </div>
           </div>
+
 
           {/* Search Button */}
           <div className="w-full md:w-auto p-1 md:p-0 ml-auto">
