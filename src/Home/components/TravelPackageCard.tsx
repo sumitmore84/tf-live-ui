@@ -1,17 +1,44 @@
 import Image from "next/image"
 import { ArrowRight, MapPin, Calendar } from "lucide-react"
+export type EventType = "Racing Tournaments" | "Artist Concert" | "Sports (Cricket, Football)" | "Stand Up – Local Shows"
+export type StatusType = "coming-soon" | "opening-soon" | "high-demand"
+
 
 interface TravelPackageCardProps {
     image: string
     tag: string
     icon?: string
     title: string
-    location: string
+    eventType?: EventType
+    status: StatusType
+    location: {
+        city: string
+        country: string
+    }
     dateRange: string
-    price: string
+    startingPrice: string
     duration: string
     href?: string
 }
+
+const eventTypeIcons: Record<EventType, string> = {
+    concert: "🎤",
+    racing: "🏎️",
+    sports: "🏏",
+}
+
+const statusLabels: Record<StatusType, string> = {
+    "coming-soon": "Coming Soon",
+    "opening-soon": "Opening Soon",
+    "high-demand": "High Demand",
+}
+
+const statusStyles: Record<StatusType, string> = {
+    "coming-soon": "bg-secondary text-secondary-foreground",
+    "opening-soon": "bg-primary text-primary-foreground",
+    "high-demand": "bg-destructive text-destructive-foreground",
+}
+
 
 export default function TravelPackageCard({
     image,
@@ -20,7 +47,7 @@ export default function TravelPackageCard({
     title,
     location,
     dateRange,
-    price,
+    startingPrice,
     duration,
     href = "#",
 }: TravelPackageCardProps) {
@@ -59,7 +86,7 @@ export default function TravelPackageCard({
                 {/* Location */}
                 <div className="flex items-center gap-1.5 text-muted-foreground">
                     <MapPin className="h-4 w-4" />
-                    <span className="text-sm">{location}</span>
+                    <span className="text-sm">{location.city}, {location.country}</span>
                 </div>
 
                 {/* Date */}
@@ -70,7 +97,7 @@ export default function TravelPackageCard({
 
                 {/* Price & Duration */}
                 <div className="mt-auto flex items-baseline gap-2 pt-2">
-                    <span className="text-lg font-bold text-primary">{price}</span>
+                    <span className="text-lg font-bold text-primary">₹{startingPrice}</span>
                     <span className="text-sm text-muted-foreground">
                         <span className="mx-1.5 text-border">•</span>
                         {duration}

@@ -5,7 +5,7 @@ import { ChevronLeft, ChevronRight } from "lucide-react"
 import { UpcomingTravelCard, type TravelPackage } from "@/Home/components/"
 import { Button } from "@/components/ui/button"
 
-const upcomingPackages: TravelPackage[] = [
+const upcomingPackages = [
   {
     id: "1",
     title: "Coldplay Music of the Spheres World Tour 2026",

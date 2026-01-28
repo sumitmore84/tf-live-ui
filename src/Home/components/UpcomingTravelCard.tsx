@@ -3,14 +3,14 @@
 import { Bell, Calendar, Clock, MapPin } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
-export type EventType = "concert" | "racing" | "sports"
+export type EventType = "Racing Tournaments" | "racing" | "sports"
 export type StatusType = "coming-soon" | "opening-soon" | "high-demand"
 
 export interface TravelPackage {
     id: string
     title: string
-    eventType: EventType
-    status: StatusType
+    eventType?: EventType
+    status?: StatusType
     image: string
     location: {
         city: string

@@ -1,4 +1,4 @@
-import { TravelPackageCard } from "@/Home/components/"
+import { UpcomingTravelCard } from "@/Home/components/"
 
 const packages = [
   {
@@ -7,9 +7,12 @@ const packages = [
     tag: "Motorsport",
     icon: "🏎️",
     title: "Formula 1 Abu Dhabi GP",
-    location: "Abu Dhabi, UAE",
+    location: {
+      city: "Abu Dhabi",
+      country: "UAE"
+    },
     dateRange: "Nov 20 – Nov 22",
-    price: "From ₹89,999",
+    startingPrice: 89999,
     duration: "3D / 2N",
     href: "#",
   },
@@ -19,9 +22,12 @@ const packages = [
     tag: "Tennis",
     icon: "🎾",
     title: "Wimbledon Championships",
-    location: "London, UK",
+    location: {
+      city: "London",
+      country: "UK"
+    },
     dateRange: "Jul 1 – Jul 14",
-    price: "From ₹1,49,999",
+    startingPrice: 149999,
     duration: "5D / 4N",
     href: "#",
   },
@@ -31,9 +37,12 @@ const packages = [
     tag: "Football",
     icon: "⚽",
     title: "UEFA Champions League Final",
-    location: "Munich, Germany",
+    location: {
+      city: "Munich",
+      country: "Germany"
+    },
     dateRange: "May 31 – Jun 2",
-    price: "From ₹2,29,999",
+    startingPrice: 229999,
     duration: "4D / 3N",
     href: "#",
   },
@@ -43,9 +52,12 @@ const packages = [
     tag: "Football",
     icon: "⚽",
     title: "UEFA Champions League Final",
-    location: "Munich, Germany",
+    location: {
+      city: "Munich",
+      country: "Germany"
+    },
     dateRange: "May 31 – Jun 2",
-    price: "From ₹2,29,999",
+    startingPrice: 229999,
     duration: "4D / 3N",
     href: "#",
   },
@@ -55,9 +67,12 @@ const packages = [
     tag: "Football",
     icon: "⚽",
     title: "UEFA Champions League Final",
-    location: "Munich, Germany",
+    location: { 
+      city: "Munich",
+      country: "Germany"
+    },    
     dateRange: "May 31 – Jun 2",
-    price: "From ₹2,29,999",
+    startingPrice: 229999,
     duration: "4D / 3N",
     href: "#",
   },
@@ -81,7 +96,7 @@ export default function TravelForEvents() {
         <div className="flex gap-6 overflow-x-auto py-8 px-4 sm:mx-0 sm:px-0 no-scrollbar snap-x snap-mandatory">
           {packages.map((pkg) => (
             <div key={pkg.id} className="w-[85vw] flex-shrink-0 snap-start sm:w-[350px]">
-              <TravelPackageCard {...pkg} />
+              <UpcomingTravelCard package={pkg} />
             </div>
           ))}
         </div>
