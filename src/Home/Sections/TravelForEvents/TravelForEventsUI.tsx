@@ -3,13 +3,14 @@ import { UpcomingTravelCard } from "@/Home/components/"
 const packages = [
   {
     id: 1,
-    image: "/f1-abu-dhabi.jpg",
+    image:
+      "https://images.unsplash.com/photo-1542362567-b07e54358753?auto=format&fit=crop&w=1200&q=80",
     tag: "Motorsport",
     icon: "🏎️",
     title: "Formula 1 Abu Dhabi GP",
     location: {
       city: "Abu Dhabi",
-      country: "UAE"
+      country: "UAE",
     },
     dateRange: "Nov 20 – Nov 22",
     startingPrice: 89999,
@@ -18,13 +19,14 @@ const packages = [
   },
   {
     id: 2,
-    image: "/f1-abu-dhabi.jpg",
+    image:
+      "https://images.unsplash.com/photo-1502877338535-766e1452684a?auto=format&fit=crop&w=1200&q=80",
     tag: "Tennis",
     icon: "🎾",
     title: "Wimbledon Championships",
     location: {
       city: "London",
-      country: "UK"
+      country: "UK",
     },
     dateRange: "Jul 1 – Jul 14",
     startingPrice: 149999,
@@ -33,13 +35,14 @@ const packages = [
   },
   {
     id: 3,
-    image: "/f1-abu-dhabi.jpg",
+    image:
+      "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=1200&q=80",
     tag: "Football",
     icon: "⚽",
     title: "UEFA Champions League Final",
     location: {
       city: "Munich",
-      country: "Germany"
+      country: "Germany",
     },
     dateRange: "May 31 – Jun 2",
     startingPrice: 229999,
@@ -48,13 +51,14 @@ const packages = [
   },
   {
     id: 4,
-    image: "/f1-abu-dhabi.jpg",
+    image:
+      "https://images.unsplash.com/photo-1518091043644-c1d4457512c6?auto=format&fit=crop&w=1200&q=80",
     tag: "Football",
     icon: "⚽",
     title: "UEFA Champions League Final",
     location: {
       city: "Munich",
-      country: "Germany"
+      country: "Germany",
     },
     dateRange: "May 31 – Jun 2",
     startingPrice: 229999,
@@ -63,20 +67,22 @@ const packages = [
   },
   {
     id: 5,
-    image: "/f1-abu-dhabi.jpg",
+    image:
+      "https://images.unsplash.com/photo-1521412644187-c49fa049e84d?auto=format&fit=crop&w=1200&q=80",
     tag: "Football",
     icon: "⚽",
     title: "UEFA Champions League Final",
-    location: { 
+    location: {
       city: "Munich",
-      country: "Germany"
-    },    
+      country: "Germany",
+    },
     dateRange: "May 31 – Jun 2",
     startingPrice: 229999,
     duration: "4D / 3N",
     href: "#",
   },
 ]
+
 
 export default function TravelForEvents() {
   return (

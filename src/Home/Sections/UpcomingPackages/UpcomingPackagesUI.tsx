@@ -137,11 +137,14 @@ export default function UpcomingTravel() {
             WebkitOverflowScrolling: "touch",
           }}
         >
-          {upcomingPackages.map((pkg) => (
+          <div className="flex gap-6 overflow-x-auto py-8 px-4 sm:mx-0 sm:px-0 no-scrollbar snap-x snap-mandatory">
+              {upcomingPackages.map((pkg) => (
             <div key={pkg.id} style={{ scrollSnapAlign: "start" }}>
               <UpcomingTravelCard package={pkg} />
             </div>
-          ))}
+            ))}
+          </div>
+          
         </div>
 
         {/* Mobile Scroll Hint */}
