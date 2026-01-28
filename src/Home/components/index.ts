@@ -1,6 +1,11 @@
 import Footer from "./Footer/Footer";
 import Header from  "./Header/Header";
+import TravelPackageCard from "./TravelPackageCard";
+import UpcomingTravelCard , {TravelPackage} from "./UpcomingTravelCard";
 export {
     Footer,
-    Header
+    Header,
+    TravelPackageCard,
+    UpcomingTravelCard,
+    type TravelPackage
 }

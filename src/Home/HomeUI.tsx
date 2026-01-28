@@ -26,9 +26,6 @@ const HomeUI = () => {
         <TopArtists />
       </section>
       <section className='section-container'>
-        <TrendingPackages />
-      </section>
-      <section className='section-container'>
         <UpcomingPackages />
       </section>
       <section className='section-container'>

@@ -267,7 +267,7 @@ const SearchBar = () => {
               onClick={handleSearch}
               className={`w-full md:w-auto flex items-center justify-center gap-2 px-8 py-4 md:py-5 rounded-xl md:rounded-full font-bold text-white transition-all shadow-lg shadow-[#F17235]/30 ${isSearchDisabled
                 ? 'bg-gray-300 cursor-not-allowed grayscale'
-                : 'bg-[#F17235] hover:bg-[#d9622d] active:scale-95'
+                : 'button-primary'
                 }`}
             >
               <Search className="w-5 h-5" />
