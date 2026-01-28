@@ -1,8 +1,13 @@
 "use client"
 import React, { useState } from 'react'
 import Link from 'next/link'
+import { useAuth } from "@/context/AuthContext" // 1. Import the hook
+import { LoginModal } from "@/Home/components/LoginModal" // 2. Import your modal
+import { Button } from "@/components/ui/button"
 
 const Header = () => {
+  const { user, isAuthenticated , signOut} = useAuth(); // 3. Consume Auth state
+
   const navLinks = [
     { name: 'Home', href: '/', active: true },
     { name: 'Explore Events', href: '#' },
@@ -11,7 +16,7 @@ const Header = () => {
     { name: 'upcoming', href: '#' },
   ]
 
-  const [activeLink, setActiveLink] = useState('home')
+  const [activeLink, setActiveLink] = useState('Home')
 
   return (
     <nav className="flex items-center justify-between px-6 py-4 bg-white shadow-sm md:px-16">
@@ -36,27 +41,41 @@ const Header = () => {
               ? 'text-[#F17235]'
               : 'text-[#2D3142] hover:text-[#F17235]'
               }`}
-            onClick={() => {
-              console.log("clicked", link.name);
-              setActiveLink(link.name)
-            }}
+            onClick={() => setActiveLink(link.name)}
           >
             {link.name}
           </Link>
         ))}
       </div>
 
-      {/* Auth Buttons */}
+      {/* Auth Section */}
       <div className="flex items-center gap-6">
         <Link href="#" className="hidden sm:block text-sm font-medium text-[#2D3142] hover:text-[#F17235]">
           Help
         </Link>
-        <Link href="#" className="hidden sm:block text-sm font-medium text-[#2D3142] hover:text-[#F17235]">
-          Sign up
-        </Link>
-        <button className="px-6 py-2 bg-[#F17235] text-white rounded-full text-sm font-medium hover:bg-[#d9622d] transition-colors">
-          Log in
-        </button>
+
+        {isAuthenticated ? (
+          // 4. Show User Profile / Logout if logged in
+          <div className="flex items-center gap-4">
+            <span className="text-sm font-medium text-[#2D3142]">
+              Hi, {user?.email}
+            </span>
+            <button 
+              onClick={signOut}
+              className="text-sm font-medium text-red-500 hover:text-red-600"
+            >
+              Logout
+            </button>
+          </div>
+        ) : (
+          // 5. Show Sign Up and Login Modal if logged out
+          <>
+            <Link href="#" className="hidden sm:block text-sm font-medium text-[#2D3142] hover:text-[#F17235]">
+              Sign up
+            </Link>
+            <LoginModal /> 
+          </>
+        )}
       </div>
     </nav>
   )

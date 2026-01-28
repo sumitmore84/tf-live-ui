@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import {Header, Footer} from "@/Home/components";
+import { Header, Footer } from "@/Home/components";
+// 1. Import your AuthProvider (adjust the path if you chose /lib instead)
+import { AuthProvider } from "@/context/AuthContext"; 
+
 const inter = Inter({
   subsets: ["latin"],
   display: "swap",
@@ -14,26 +17,7 @@ export const metadata: Metadata = {
     template: "%s | TF Live",
   },
   description: "Discover and book amazing travel experiences with live artists",
-  keywords: ["travel", "artists", "packages", "concerts", "experiences"],
-  authors: [{ name: "TF Live" }],
-  creator: "TF Live",
-  openGraph: {
-    type: "website",
-    locale: "en_US",
-    url: "https://tflive.com",
-    title: "TF Live",
-    description: "Discover and book amazing travel experiences with live artists",
-    siteName: "TF Live",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "TF Live",
-    description: "Discover and book amazing travel experiences with live artists",
-  },
-  robots: {
-    index: true,
-    follow: true,
-  },
+  // ... rest of your metadata
 };
 
 export default function RootLayout({
@@ -44,14 +28,21 @@ export default function RootLayout({
   return (
     <html lang="en" className={inter.variable}>
       <body className="antialiased">
-        <header className="bg-transparent border-b-0">
-        <Header />
-      </header>
-        {children}
+        {/* 2. Wrap everything inside AuthProvider */}
+        <AuthProvider>
+          <header className="bg-transparent border-b-0">
+            <Header />
+          </header>
+          
+          <main>
+            {children}
+          </main>
+
+          <footer className="w-full bg-black">
+            <Footer />
+          </footer>
+        </AuthProvider>
       </body>
-      <footer className="w-full bg-black">
-          <Footer />
-        </footer>
     </html>
   );
 }
