@@ -83,10 +83,10 @@ export function SearchHeader({
               <DropdownMenuTrigger asChild>
                 <Button
                   variant="outline"
-                  className="w-full justify-between gap-2 rounded-xl border-border bg-card px-4 py-2.5 text-left font-normal sm:w-48"
+                  className="w-full justify-between gap-2 rounded-xl border-border bg-card px-4 py-2.5 text-left font-normal sm:w-48 whitespace-normal"
                   disabled={!selectedCategory && destinations.length === 0}
                 >
-                  <span className={selectedDestination ? "text-foreground" : "text-muted-foreground"}>
+                  <span className={selectedDestination ? "text-foreground " : "text-muted-foreground"}>
                     {selectedDestination || "Destination"}
                   </span>
                   <ChevronDown className="h-4 w-4 text-muted-foreground" />

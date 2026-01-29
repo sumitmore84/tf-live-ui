@@ -60,7 +60,7 @@ export function FilterSidebar({
         <div className="space-y-2">
           <Button
             variant={selectedDestinationFilter === null ? "secondary" : "ghost"}
-            className="w-full justify-start rounded-lg text-left text-sm font-normal"
+            className="w-full justify-start rounded-lg text-left text-sm font-normal whitespace-normal"
             onClick={() => onDestinationFilterChange(null)}
           >
             All Destinations
@@ -69,7 +69,7 @@ export function FilterSidebar({
             <Button
               key={destination}
               variant={selectedDestinationFilter === destination ? "secondary" : "ghost"}
-              className="w-full justify-start rounded-lg text-left text-sm font-normal"
+              className="w-full justify-start rounded-lg text-left text-sm font-normal whitespace-normal"
               onClick={() => onDestinationFilterChange(destination)}
             >
               {destination}
