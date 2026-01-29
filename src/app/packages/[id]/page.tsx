@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ArrowLeft, Calendar, MapPin, Clock, CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { travelPackagesData } from "@/data/travelPackagesData";
+import { BookNowButton } from "@/Home/components/BookNowButton";
 
 interface PackagePageProps {
     params: Promise<{
@@ -100,7 +101,7 @@ export default async function PackageDetailPage(props: PackagePageProps) {
                             </div>
 
                             <div className="space-y-3">
-                                <Button className="w-full text-lg h-12">Book Now</Button>
+                                <BookNowButton />
                                 <Button variant="outline" className="w-full">Download Itinerary</Button>
                             </div>
 

@@ -11,40 +11,57 @@ import {
 } from "@/components/ui/dialog";
 import { LoginForm } from "@/Home/login/LoginForm";
 import { SignUpForm } from "@/Home/login/SignUpForm";
+
 export type ViewTypes = "login" | "signup";
+
 type Props = {
   vt: ViewTypes;
+  open?: boolean;                  // 1. New Prop
+  onOpenChange?: (open: boolean) => void; // 2. New Prop
+  hideTrigger?: boolean;           // 3. New Prop
 };
 
-export const AuthenticatioModel = ({ vt }: Props) => {
+export const AuthenticatioModel = ({ 
+  vt, 
+  open: externalOpen, 
+  onOpenChange: externalOnOpenChange, 
+  hideTrigger 
+}: Props) => {
   const { isAuthenticated } = useAuth();
-  const [open, setOpen] = useState(false);
+  const [internalOpen, setInternalOpen] = useState(false);
   const [view, setView] = useState<ViewTypes>(vt);
 
+  // Determine if we are in "controlled" mode (controlled by parent) or "uncontrolled" mode (self-managed)
+  const isControlled = externalOpen !== undefined;
+  const open = isControlled ? externalOpen : internalOpen;
+  const setOpen = isControlled && externalOnOpenChange ? externalOnOpenChange : setInternalOpen;
+
   useEffect(() => {
+    // Close modal automatically when user becomes authenticated
     if (isAuthenticated) setOpen(false);
-  }, [isAuthenticated]);
+  }, [isAuthenticated, setOpen]);
 
   const handleOpenChange = (isOpen: boolean) => {
     setOpen(isOpen);
-
     if (isOpen) {
-      setView(vt); // 👈 IMPORTANT
+      setView(vt);
     }
   };
 
   return (
     <Dialog open={open} onOpenChange={handleOpenChange}>
-      <DialogTrigger asChild>
-        <button
-          className={`px-6 py-2 rounded-full text-sm font-medium transition-colors
-      ${vt === "login" && "bg-[#F17235] text-white hover:bg-[#d9622d]"}
-    `}
-        >
-          {vt === "login" ? "Log in" : "Sign up"}
-        </button>
-      </DialogTrigger>
-
+      {/* 4. Only render the default trigger button if NOT hidden */}
+      {!hideTrigger && (
+        <DialogTrigger asChild>
+          <button
+            className={`px-6 py-2 rounded-full text-sm font-medium transition-colors
+            ${vt === "login" && "bg-[#F17235] text-white hover:bg-[#d9622d]"}
+            `}
+          >
+            {vt === "login" ? "Log in" : "Sign up"}
+          </button>
+        </DialogTrigger>
+      )}
 
       <DialogContent className="sm:max-w-106.25 bg-white text-black">
         <DialogHeader>
