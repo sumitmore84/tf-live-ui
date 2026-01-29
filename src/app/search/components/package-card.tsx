@@ -13,7 +13,7 @@ interface Package {
   country: string
   start_date: string
   image_url: string
-  price: number
+  current_price: number
 }
 
 interface PackageCardProps {
@@ -95,7 +95,7 @@ export function PackageCard({ pkg }: PackageCardProps) {
           <div>
             <p className="text-sm text-muted-foreground">Starting from</p>
             <p className="text-2xl font-bold text-foreground">
-              ${pkg.price.toLocaleString()}
+              ${pkg.current_price?.toLocaleString()}
               <span className="text-sm font-normal text-muted-foreground"> / person</span>
             </p>
           </div>
