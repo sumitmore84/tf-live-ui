@@ -14,7 +14,7 @@ export default function Footer() {
             <div className="flex items-center gap-2">
               <Ticket className="h-6 w-6 text-primary" />
               <span className="text-xl font-bold tracking-tight text-foreground">
-                EVENT<span className="text-primary">ESCAPE</span>
+                TripFactory<span className="text-primary">Live</span>
               </span>
             </div>
             <p className="text-muted-foreground text-sm leading-relaxed">
@@ -70,7 +70,7 @@ export default function Footer() {
               </div>
               <div className="flex items-center gap-3">
                 <Mail className="h-4 w-4 text-primary" />
-                <span>hello@eventescape.com</span>
+                <span>hello@TripFactoryLive.com</span>
               </div>
             </div>
           </div>

@@ -21,12 +21,13 @@ export default async function PackageDetailPage(props: PackagePageProps) {
     if (!pkg) {
         return notFound();
     }
+    console.log("Package image_url:", pkg.image_url); // Debugging line to check package data
     return (
         <main className="min-h-screen bg-background">
             {/* Hero Section with Image */}
             <div className="relative h-[400px] w-full lg:h-[500px]">
                 <img
-                    src={pkg.image}
+                    src={pkg.image_url}
                     alt={pkg.title}
                     className="h-full w-full object-cover"
                 />

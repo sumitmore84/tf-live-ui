@@ -1,6 +1,7 @@
 "use client"
 import React, { useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { useAuth } from "@/context/AuthContext" // 1. Import the hook
 import { AuthenticationModel } from "@/Home/components/AuthenticationModel"
 import { Button } from "@/components/ui/button"
@@ -25,12 +26,14 @@ const Header = () => {
     <nav className="flex items-center justify-between px-6 py-4 bg-white shadow-sm md:px-16">
       {/* Logo */}
       <div className="flex items-center gap-2">
-        <Link href="/" className="relative w-8 h-8">
-          <svg viewBox="0 0 100 100" className="w-full h-full text-orange-600 fill-current">
-            <path d="M50 20c-8.28 0-15 6.72-15 15s6.72 15 15 15 15-6.72 15-15-6.72-15-15-15zm0 35c-15 0-35 15-35 25v5h70v-5c0-10-20-25-35-25z" className="opacity-20" />
-            <circle cx="50" cy="30" r="10" />
-            <path d="M50 45c-15 0-25 10-25 25 0 10 10 15 25 15s25-5 25-15c0-15-10-25-25-25z" />
-          </svg>
+        <Link href="/" className="relative w-12 h-12">
+          <Image 
+            src="/logo.png" 
+            alt="Logo" 
+            width={48} 
+            height={48} 
+            className="w-12 h-12 object-contain rounded-full"
+          />
         </Link>
       </div>
 
