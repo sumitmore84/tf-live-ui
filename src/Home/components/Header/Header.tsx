@@ -2,11 +2,11 @@
 import React, { useState } from 'react'
 import Link from 'next/link'
 import { useAuth } from "@/context/AuthContext" // 1. Import the hook
-import { LoginModal } from "@/Home/components/LoginModal" // 2. Import your modal
+import { AuthenticatioModel } from "@/Home/components/AuthenticatioModel"
 import { Button } from "@/components/ui/button"
 
 const Header = () => {
-  const { user, isAuthenticated , signOut} = useAuth(); // 3. Consume Auth state
+  const { user, isAuthenticated, signOut } = useAuth(); // 3. Consume Auth state
 
   const navLinks = [
     { name: 'Home', href: '/', active: true },
@@ -60,7 +60,7 @@ const Header = () => {
             <span className="text-sm font-medium text-[#2D3142]">
               Hi, {user?.email}
             </span>
-            <button 
+            <button
               onClick={signOut}
               className="text-sm font-medium text-red-500 hover:text-red-600"
             >
@@ -70,10 +70,8 @@ const Header = () => {
         ) : (
           // 5. Show Sign Up and Login Modal if logged out
           <>
-            <Link href="#" className="hidden sm:block text-sm font-medium text-[#2D3142] hover:text-[#F17235]">
-              Sign up
-            </Link>
-            <LoginModal /> 
+            <AuthenticatioModel vt={"signup"} />
+            <AuthenticatioModel vt={"login"} />
           </>
         )}
       </div>
