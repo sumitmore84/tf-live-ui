@@ -21,7 +21,7 @@ type Props = {
   hideTrigger?: boolean;           // 3. New Prop
 };
 
-export const AuthenticatioModel = ({ 
+export const AuthenticationModel = ({ 
   vt, 
   open: externalOpen, 
   onOpenChange: externalOnOpenChange, 
@@ -54,7 +54,7 @@ export const AuthenticatioModel = ({
       {!hideTrigger && (
         <DialogTrigger asChild>
           <button
-            className={`px-6 py-2 rounded-full text-sm font-medium transition-colors
+            className={`px-6 py-2 rounded-full text-sm font-medium transition-colors cursor-pointer
             ${vt === "login" && "bg-[#F17235] text-white hover:bg-[#d9622d]"}
             `}
           >

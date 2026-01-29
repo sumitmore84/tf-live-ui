@@ -2,7 +2,7 @@
 import React, { useState } from 'react'
 import Link from 'next/link'
 import { useAuth } from "@/context/AuthContext" // 1. Import the hook
-import { AuthenticatioModel } from "@/Home/components/AuthenticationModel"
+import { AuthenticationModel } from "@/Home/components/AuthenticationModel"
 import { Button } from "@/components/ui/button"
 
 const Header = () => {
@@ -60,7 +60,7 @@ const Header = () => {
         {isAuthenticated ? (
           // 4. Show User Profile / Logout if logged in
           <div className="flex items-center justify-center gap-4">
-            <span className="text-sm font-medium text-[#2D3142]  leading-none">
+            <span className="text-sm font-medium text-[#2D3142]  leading-none cursor-pointer">
               Hi, {user?.email?.split("@")[0]}
             </span>
 
@@ -68,7 +68,7 @@ const Header = () => {
               variant="ghost"
               size="sm"
               onClick={signOut}
-              className="text-red-500 hover:text-red-600"
+              className="text-red-500 hover:text-red-600 cursor-pointer"
             >
               Logout
             </Button>
@@ -77,8 +77,8 @@ const Header = () => {
         ) : (
           // 5. Show Sign Up and Login Modal if logged out
           <>
-            <AuthenticatioModel vt={"signup"} />
-            <AuthenticatioModel vt={"login"} />
+            <AuthenticationModel vt={"signup"} />
+            <AuthenticationModel vt={"login"} />
           </>
         )}
       </div>

@@ -34,7 +34,7 @@ export default async function PackageDetailPage(props: PackagePageProps) {
                 {/* Back Button */}
                 <div className="absolute top-6 left-6">
                     <Link href="/">
-                        <Button variant="secondary" size="sm" className="gap-2">
+                        <Button variant="secondary" size="sm" className="gap-2 cursor-pointer">
                             <ArrowLeft className="h-4 w-4" /> Back to List
                         </Button>
                     </Link>
@@ -101,8 +101,11 @@ export default async function PackageDetailPage(props: PackagePageProps) {
                             </div>
 
                             <div className="space-y-3">
-                                <BookNowButton />
-                                <Button variant="outline" className="w-full">Download Itinerary</Button>
+                                <BookNowButton
+                                    packageTitle={pkg.title}
+                                    price={pkg.startingPrice}
+                                />
+                                <Button variant="outline" className="w-full cursor-pointer">Download Itinerary</Button>
                             </div>
 
                             <p className="mt-4 text-xs text-center text-muted-foreground">
