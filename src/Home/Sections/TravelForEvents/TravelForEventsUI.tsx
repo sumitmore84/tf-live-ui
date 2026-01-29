@@ -1,117 +1,63 @@
-import { UpcomingTravelCard } from "@/Home/components/"
+// Home/Sections/TravelForEvents/index.tsx
+import { UpcomingTravelCard } from "@/Home/components/";
+import { TravelPackage } from "@/types/travelPackageType";
 
-const packages = [
-  {
-    id: 1,
-    image:
-      "https://images.unsplash.com/photo-1542362567-b07e54358753?auto=format&fit=crop&w=1200&q=80",
-    tag: "Motorsport",
-    icon: "🏎️",
-    title: "Formula 1 Abu Dhabi GP",
-    location: {
-      city: "Abu Dhabi",
-      country: "UAE",
-    },
-    dateRange: "Nov 20 – Nov 22",
-    startingPrice: 89999,
-    duration: "3D / 2N",
-    ctaTitle: "Book Now",
-    href: "#",
-  },
-  {
-    id: 2,
-    image:
-      "https://images.unsplash.com/photo-1502877338535-766e1452684a?auto=format&fit=crop&w=1200&q=80",
-    tag: "Tennis",
-    icon: "🎾",
-    title: "Wimbledon Championships",
-    location: {
-      city: "London",
-      country: "UK",
-    },
-    dateRange: "Jul 1 – Jul 14",
-    startingPrice: 149999,
-    duration: "5D / 4N",
-    ctaTitle: "Book Now",
-    href: "#",
-  },
-  {
-    id: 3,
-    image:
-      "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=1200&q=80",
-    tag: "Football",
-    icon: "⚽",
-    title: "UEFA Champions League Final",
-    location: {
-      city: "Munich",
-      country: "Germany",
-    },
-    dateRange: "May 31 – Jun 2",
-    startingPrice: 229999,
-    duration: "4D / 3N",
-    ctaTitle: "Book Now",
-    href: "#",
-  },
-  {
-    id: 4,
-    image:
-      "https://images.unsplash.com/photo-1518091043644-c1d4457512c6?auto=format&fit=crop&w=1200&q=80",
-    tag: "Football",
-    icon: "⚽",
-    title: "UEFA Champions League Final",
-    location: {
-      city: "Munich",
-      country: "Germany",
-    },
-    dateRange: "May 31 – Jun 2",
-    startingPrice: 229999,
-    duration: "4D / 3N",
-    ctaTitle: "Book Now",
-    href: "#",
-  },
-  {
-    id: 5,
-    image:
-      "https://images.unsplash.com/photo-1521412644187-c49fa049e84d?auto=format&fit=crop&w=1200&q=80",
-    tag: "Football",
-    icon: "⚽",
-    title: "UEFA Champions League Final",
-    location: {
-      city: "Munich",
-      country: "Germany",
-    },
-    dateRange: "May 31 – Jun 2",
-    startingPrice: 229999,
-    duration: "4D / 3N",
-    ctaTitle: "Book Now",
-    href: "#",
-  },
-]
+interface TravelForEventsProps {
+  events: TravelPackage[];
+}
 
+export default function TravelForEvents({ events }: TravelForEventsProps) {
+  // 1. Filter: Only show high-intent travel categories 
+  // 2. Map: Convert Supabase fields to UI-friendly fields
+  const displayPackages = events
+    .filter((event) => ["RACING", "SPORTS", "CONCERT"].includes(event.category))
+    .map((event) => {
+      // Calculate date range string (e.g., "Apr 10 – Apr 12")
+      const start = new Date(event.start_date);
+      const end = new Date(event.end_date);
+      const dateRange = `${start.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })} – ${end.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}`;
 
-export default function TravelForEvents() {
+      return {
+        ...event,
+        // Map DB fields to UI Component names
+        image: event.image_url || "/placeholder.svg", // Fallback for null images
+        eventType: event.category.toLowerCase(), // "RACING" -> "racing"
+        location: {
+          city: event.city,
+          country: event.country,
+        },
+        dateRange: dateRange,
+        startingPrice: event.current_price || 0,
+        duration: event.duration || "4D / 3N", // Default fallback
+        status: event.status || "coming-soon", // Logic could be added to set based on dates
+        ctaTitle: event.current_price && event.current_price > 0 ? "Book Now" : "Notify Me",
+      };
+    });
+
+  if (displayPackages.length === 0) return null;
+
   return (
-    <section className="min-h-screen bg-background px-4 mx-4 py-12 sm:px-6 lg:px-8">
+    <section className="min-h-[60vh] bg-background px-4 mx-4 py-12 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-6xl">
-        {/* Header */}
         <div className="mb-10">
           <h1 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
             Travel For Events
           </h1>
           <p className="mt-3 max-w-2xl text-muted-foreground">
-            Your front-row seat to the world's biggest events
+            Exclusive travel packages for the world's most anticipated events.
           </p>
         </div>
 
-        {/* Card Grid - Updated to Horizontal Scroll */}
+        {/* Horizontal Scroll Grid */}
         <div className="flex gap-6 overflow-x-auto py-8 px-4 sm:mx-0 sm:px-0 no-scrollbar snap-x snap-mandatory">
-          {packages.map((pkg) => (
-            <div key={pkg.id} className="w-[85vw] flex-shrink-0 snap-start sm:w-[350px]">
-              <UpcomingTravelCard package={pkg} />
+          {displayPackages.map((pkg) => (
+            <div key={pkg.id} className="snap-start">
+              {/* Ensure the card gets the transformed pkg object */}
+              <UpcomingTravelCard package={pkg as any} />
             </div>
           ))}
         </div>
       </div>
     </section>
-  )
+  );
 }

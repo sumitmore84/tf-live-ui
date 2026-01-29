@@ -27,7 +27,7 @@ const HomeUI = ({ events }: HomeUIProps) => {
         <HeroUI />
       </section>
       <section className='section-container'>
-        <TravelForEventsUI />
+        <TravelForEventsUI events={events} />
       </section>
       <section className='section-container'>
         <TopArtists />
