@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/context/AuthContext";
 import { AuthenticationModel } from "@/Home/components/AuthenticationModel";
-import { BookingModal } from "@/Home/components/BookingModal";
+import { BookingModal } from "@/Home/components/Booking/BookingModal";
 
 // 1. Accept package details as props
 interface BookNowButtonProps {

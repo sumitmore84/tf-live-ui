@@ -3,7 +3,7 @@ import Link from "next/link";
 import { ArrowLeft, Calendar, MapPin, Clock, CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { travelPackagesData } from "@/data/travelPackagesData";
-import { BookNowButton } from "@/Home/components/BookNowButton";
+import { BookNowButton } from "@/Home/components/Booking/BookNowButton";
 
 interface PackagePageProps {
     params: Promise<{
