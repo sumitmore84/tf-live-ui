@@ -4,6 +4,7 @@ import { getEvents } from "@/lib/data-service";
 import { BookNowButton } from "@/Home/components/Booking/BookNowButton";
 import { AuthenticatedItinerary } from "./AuthenticatedItinerary";
 import { BackButton } from "./BackButton";
+import { PriceDisplay } from "./PriceDisplay";
 interface PackagePageProps {
     params: Promise<{
         id: string;
@@ -20,7 +21,6 @@ export default async function PackageDetailPage(props: PackagePageProps) {
     if (!pkg) {
         return notFound();
     }
-    console.log("Package image_url:", pkg.image_url); // Debugging line to check package data
     return (
         <main className="min-h-screen bg-background">
             {/* Hero Section with Image */}
@@ -91,11 +91,7 @@ export default async function PackageDetailPage(props: PackagePageProps) {
                     {/* Sidebar Booking Card */}
                     <div className="lg:col-span-1">
                         <div className="sticky top-6 rounded-xl bg-card border border-border p-6 shadow-lg">
-                            <p className="text-sm text-muted-foreground mb-1">Starting from</p>
-                            <div className="mb-6 flex items-baseline gap-1">
-                                <span className="text-3xl font-bold">₹{pkg.current_price?.toLocaleString("en-IN")}</span>
-                                <span className="text-sm text-muted-foreground">/ person</span>
-                            </div>
+                            <PriceDisplay price={pkg.current_price || 0} />
 
                             <div className="space-y-3">
                                 <BookNowButton
