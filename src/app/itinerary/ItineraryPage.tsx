@@ -7,9 +7,10 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 
 async function fetchItinerary(params: any) {
+  const BASE_URL = process.env.NEXT_PUBLIC_DOMAIN_NAME
   try {
     const value = typeof params.value === 'string' ? JSON.parse(params.value) : params.value;
-    const response = await fetch("http://localhost:8080/api/ai/itinerary/json", {
+    const response = await fetch(`${BASE_URL}/api/ai/itinerary/json`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({

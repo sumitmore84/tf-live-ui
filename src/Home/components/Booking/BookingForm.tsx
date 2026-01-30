@@ -50,7 +50,7 @@ export function BookingForm({ packageTitle, price, toCity, eventType, onCancel }
     const [showSuccessDialog, setShowSuccessDialog] = useState(false);
     const [estimatedPrice, setEstimatedPrice] = useState(0);
     const [userEmail, setUserEmail] = useState("");
-
+    const BASE_URL = process.env.NEXT_PUBLIC_DOMAIN_NAME;
     const form = useForm({
         resolver: zodResolver(bookingSchema),
         defaultValues: {
@@ -75,7 +75,7 @@ export function BookingForm({ packageTitle, price, toCity, eventType, onCancel }
 
         try {
             // Step 1: Call itinerary API to get estimated price
-            const itineraryResponse = await fetch("http://localhost:8080/api/ai/itinerary/json", {
+            const itineraryResponse = await fetch(`${BASE_URL}/api/ai/itinerary/json`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
@@ -96,7 +96,7 @@ export function BookingForm({ packageTitle, price, toCity, eventType, onCancel }
 
             // Step 2: Submit booking with estimated price
             const bookingResponse = await fetch(
-                `http://localhost:8080/api/user/submit?estimatedPrice=${estimatedPrice}`,
+                `${BASE_URL}/api/user/submit?estimatedPrice=${estimatedPrice}`,
                 {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
