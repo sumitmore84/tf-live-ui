@@ -15,6 +15,7 @@ const Header = () => {
     { name: 'Trending', href: '/search' },
     { name: 'destinations', href: '/search' },
     { name: 'upcoming', href: '/search' },
+    { name: 'My Bookings', href: '/my-bookings' },
   ]
 
   const [activeLink, setActiveLink] = useState('Home')
