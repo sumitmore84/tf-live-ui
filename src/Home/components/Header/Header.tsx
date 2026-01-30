@@ -12,7 +12,6 @@ const Header = () => {
   const navLinks = [
     { name: 'Home', href: '/', active: true },
     { name: 'Explore Events', href: '/search' },
-    { name: 'Trending', href: '/search' },
     { name: 'destinations', href: '/search' },
     { name: 'Contact-Us', href: '/contact-us' },
     { name: 'My Bookings', href: '/my-bookings' },
