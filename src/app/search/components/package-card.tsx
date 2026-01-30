@@ -2,6 +2,7 @@
 
 import { Calendar, MapPin } from "lucide-react"
 import Image from "next/image"
+import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 
@@ -51,6 +52,7 @@ function getTravelDateRange(startDate: string): string {
 }
 
 export function PackageCard({ pkg }: PackageCardProps) {
+  console.log("Price", pkg.id);
   return (
     <div className="group flex flex-col overflow-hidden rounded-xl border border-border bg-card shadow-sm transition-all duration-200 hover:shadow-md sm:flex-row">
       {/* Image */}
@@ -93,15 +95,23 @@ export function PackageCard({ pkg }: PackageCardProps) {
 
         <div className="mt-4 flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
           <div>
-            <p className="text-sm text-muted-foreground">Starting from</p>
-            <p className="text-2xl font-bold text-foreground">
-              ${pkg.current_price?.toLocaleString()}
-              <span className="text-sm font-normal text-muted-foreground"> / person</span>
-            </p>
+            {pkg.current_price === 0 ? (
+              <p className="text-xl font-bold text-foreground">Contact for price</p>
+            ) : (
+              <>
+                <p className="text-sm text-muted-foreground">Starting from</p>
+                <p className="text-2xl font-bold text-foreground">
+                  ${pkg.current_price?.toLocaleString()}
+                  <span className="text-sm font-normal text-muted-foreground"> / person</span>
+                </p>
+              </>
+            )}
           </div>
-          <Button className="w-full rounded-xl px-6 py-2.5 font-medium sm:w-auto">
-            View Details
-          </Button>
+          <Link href={`/packages/${pkg.id}`}>
+            <Button className="w-full rounded-xl px-6 py-2.5 font-medium sm:w-auto">
+              View Details
+            </Button>
+          </Link>
         </div>
       </div>
     </div>

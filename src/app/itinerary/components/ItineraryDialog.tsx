@@ -46,7 +46,7 @@ export function ItineraryDialog({ toCity, eventType }: ItineraryDialogProps) {
     <Dialog>
       <DialogTrigger asChild>
         <Button variant="outline" className="w-full cursor-pointer">
-          Show Itinerary
+          Show Itinerary & Price Estimation
         </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">

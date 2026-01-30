@@ -1,10 +1,9 @@
 import { notFound } from "next/navigation";
-import Link from "next/link";
-import { ArrowLeft, Calendar, MapPin, Clock, CheckCircle } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Calendar, MapPin, Clock, CheckCircle } from "lucide-react";
 import { getEvents } from "@/lib/data-service";
 import { BookNowButton } from "@/Home/components/Booking/BookNowButton";
 import { ItineraryDialog } from "@/app/itinerary/components/ItineraryDialog";
+import { BackButton } from "./BackButton";
 interface PackagePageProps {
     params: Promise<{
         id: string;
@@ -35,11 +34,7 @@ export default async function PackageDetailPage(props: PackagePageProps) {
 
                 {/* Back Button */}
                 <div className="absolute top-6 left-6">
-                    <Link href="/">
-                        <Button variant="secondary" size="sm" className="gap-2 cursor-pointer">
-                            <ArrowLeft className="h-4 w-4" /> Back to List
-                        </Button>
-                    </Link>
+                    <BackButton />
                 </div>
             </div>
 
