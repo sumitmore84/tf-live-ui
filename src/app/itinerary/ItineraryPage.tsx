@@ -6,20 +6,25 @@ import { MapPin, Users, CalendarDays, Wallet } from "lucide-react";
 import { useEffect, useState } from "react";
 
 async function fetchItinerary(params: any) {
-  const value = JSON.parse(params.value);
-  const response = await fetch("http://localhost:8080/api/ai/itinerary/json", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      fromCity: value.fromCity,
-      toCity: value.toCity,
-      days: Number(value.days),
-      travelers: Number(value.travelers),
-      eventType: value.eventType,
-    }),
-  });
-  if (!response.ok) throw new Error("Failed to fetch itinerary");
-  return response.json();
+  try {
+    const value = typeof params.value === 'string' ? JSON.parse(params.value) : params.value;
+    const response = await fetch("http://localhost:8080/api/ai/itinerary/json", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        fromCity: value.fromCity,
+        toCity: value.toCity,
+        days: Number(value.days),
+        travelers: Number(value.travelers),
+        eventType: value.eventType,
+      }),
+    });
+    if (!response.ok) throw new Error("Failed to fetch itinerary");
+    return response.json();
+  } catch (error) {
+    console.error("Error fetching itinerary:", error);
+    throw error;
+  }
 }
 
 interface ItineraryPageProps {
@@ -64,10 +69,10 @@ export default function ItineraryPage({ searchParams }: ItineraryPageProps) {
       <header className="mb-10 text-center">
         <h1 className="text-4xl font-bold tracking-tight mb-4">Your Custom Trip</h1>
         <div className="flex flex-wrap justify-center gap-4 text-sm text-muted-foreground">
-          <div className="flex items-center gap-1"><MapPin className="h-4 w-4" /> {data.summary.destination}</div>
-          <div className="flex items-center gap-1"><CalendarDays className="h-4 w-4" /> {data.summary.totalDays} Days</div>
-          <div className="flex items-center gap-1"><Users className="h-4 w-4" /> {data.summary.travelers} Travelers</div>
-          <Badge variant="secondary" className="text-primary">
+          <div className="flex items-center gap-1 text-1xl"><MapPin className="h-4 w-4" /> {data.summary.destination}</div>
+          <div className="flex items-center gap-1 text-1xl"><CalendarDays className="h-4 w-4" /> {data.summary.totalDays} Days</div>
+          <div className="flex items-center gap-1 text-1xl"><Users className="h-4 w-4" /> {data.summary.travelers} Travelers</div>
+          <Badge variant="secondary" className="text-primary text-2xl">
             Total Est: ₹{total.toLocaleString()}
           </Badge>
         </div>
