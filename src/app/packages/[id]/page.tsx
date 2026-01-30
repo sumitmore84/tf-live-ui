@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 import { Calendar, MapPin, Clock, CheckCircle } from "lucide-react";
 import { getEvents } from "@/lib/data-service";
 import { BookNowButton } from "@/Home/components/Booking/BookNowButton";
-import { ItineraryDialog } from "@/app/itinerary/components/ItineraryDialog";
+import { AuthenticatedItinerary } from "./AuthenticatedItinerary";
 import { BackButton } from "./BackButton";
 interface PackagePageProps {
     params: Promise<{
@@ -102,7 +102,7 @@ export default async function PackageDetailPage(props: PackagePageProps) {
                                     packageTitle={pkg.title}
                                     price={pkg.current_price || 0}
                                 />
-                                <ItineraryDialog toCity={pkg.city} eventType={pkg.category}/>
+                                <AuthenticatedItinerary toCity={pkg.city} eventType={pkg.category}/>
                             </div>  
 
                             <p className="mt-4 text-xs text-center text-muted-foreground">
