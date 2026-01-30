@@ -5,6 +5,7 @@ import { BookNowButton } from "@/Home/components/Booking/BookNowButton";
 import { AuthenticatedItinerary } from "./AuthenticatedItinerary";
 import { BackButton } from "./BackButton";
 import { PriceDisplay } from "./PriceDisplay";
+import {IMAGES} from "@/constants/Images";
 interface PackagePageProps {
     params: Promise<{
         id: string;
@@ -26,7 +27,7 @@ export default async function PackageDetailPage(props: PackagePageProps) {
             {/* Hero Section with Image */}
             <div className="relative h-[400px] w-full lg:h-[500px]">
                 <img
-                    src={pkg.image_url}
+                    src={pkg.image_url || IMAGES[pkg.category as keyof typeof IMAGES] || IMAGES.CONCERT}
                     alt={pkg.title}
                     className="h-full w-full object-cover"
                 />

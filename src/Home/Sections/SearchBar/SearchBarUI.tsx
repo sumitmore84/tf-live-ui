@@ -3,7 +3,6 @@
 import React, { useState, useRef, useEffect } from 'react'
 import { Search, MapPin, Calendar, ChevronDown, AlertCircle } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { generateAllowedDates } from '@/Home/utils/SearchBarUtilities'
 import { TravelPackage } from '@/Home/components'
 import { useRouter } from 'next/navigation'
 interface SearchBarProps {

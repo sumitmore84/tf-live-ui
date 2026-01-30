@@ -42,7 +42,7 @@ const HeroUI = () => {
       x: 0,
       opacity: 1,
       transition: {
-        x: { type: 'spring', stiffness: 300, damping: 30 },
+        x: { type: 'spring' as const, stiffness: 300, damping: 30 },
         opacity: { duration: 0.5 },
       }
     },
@@ -51,7 +51,7 @@ const HeroUI = () => {
       x: direction < 0 ? '100.1%' : '-100.1%',
       opacity: 0,
       transition: {
-        x: { type: 'spring', stiffness: 300, damping: 30 },
+        x: { type: 'spring' as const, stiffness: 300, damping: 30 },
         opacity: { duration: 0.5 }
       }
     })

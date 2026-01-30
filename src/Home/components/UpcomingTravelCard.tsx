@@ -15,17 +15,6 @@ const eventTypeIcons: Record<string, string> = {
     THEATRE: "🎭",
 }
 
-const statusLabels: Record<StatusType, string> = {
-    "coming-soon": "Coming Soon",
-    "opening-soon": "Opening Soon",
-    "high-demand": "High Demand",
-}
-
-const statusStyles: Record<StatusType, string> = {
-    "coming-soon": "bg-secondary text-secondary-foreground",
-    "opening-soon": "bg-primary text-primary-foreground",
-    "high-demand": "bg-destructive text-destructive-foreground",
-}
 
 interface TravelPackageCardProps {
     package: TravelPackage

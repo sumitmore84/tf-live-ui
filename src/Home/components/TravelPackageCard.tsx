@@ -1,6 +1,6 @@
 import Image from "next/image"
 import { ArrowRight, MapPin, Calendar } from "lucide-react"
-export type EventType = "Racing Tournaments" | "Artist Concert" | "Sports (Cricket, Football)" | "Stand Up – Local Shows"
+export type EventType = "RACING" | "CONCERT" | "SPORTS" | "THEATRE"
 export type StatusType = "coming-soon" | "opening-soon" | "high-demand"
 
 
@@ -21,23 +21,6 @@ interface TravelPackageCardProps {
     href?: string
 }
 
-const eventTypeIcons: Record<EventType, string> = {
-    concert: "🎤",
-    racing: "🏎️",
-    sports: "🏏",
-}
-
-const statusLabels: Record<StatusType, string> = {
-    "coming-soon": "Coming Soon",
-    "opening-soon": "Opening Soon",
-    "high-demand": "High Demand",
-}
-
-const statusStyles: Record<StatusType, string> = {
-    "coming-soon": "bg-secondary text-secondary-foreground",
-    "opening-soon": "bg-primary text-primary-foreground",
-    "high-demand": "bg-destructive text-destructive-foreground",
-}
 
 
 export default function TravelPackageCard({

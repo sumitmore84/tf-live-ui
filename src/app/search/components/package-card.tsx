@@ -14,8 +14,8 @@ interface Package {
   city: string
   country: string
   start_date: string
-  image_url: string
-  current_price: number
+  image_url?: string | null
+  current_price?: number
 }
 
 interface PackageCardProps {
