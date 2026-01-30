@@ -10,9 +10,11 @@ import { BookingModal } from "@/Home/components/Booking/BookingModal";
 interface BookNowButtonProps {
   packageTitle: string;
   price: number;
+  toCity: string;
+  eventType: string;
 }
 
-export const BookNowButton = ({ packageTitle, price }: BookNowButtonProps) => {
+export const BookNowButton = ({ packageTitle, price, toCity, eventType }: BookNowButtonProps) => {
   const { isAuthenticated } = useAuth();
   
   // 2. State for both modals
@@ -52,6 +54,8 @@ export const BookNowButton = ({ packageTitle, price }: BookNowButtonProps) => {
         onOpenChange={setShowBookingModal}
         packageTitle={packageTitle}
         price={price}
+        toCity={toCity}
+        eventType={eventType}
       />
     </>
   );

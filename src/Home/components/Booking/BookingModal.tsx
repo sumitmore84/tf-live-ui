@@ -14,13 +14,17 @@ interface BookingModalProps {
   onOpenChange: (open: boolean) => void;
   packageTitle: string;
   price: number;
+  toCity: string;
+  eventType: string;
 }
 
 export const BookingModal = ({ 
   isOpen, 
   onOpenChange, 
   packageTitle, 
-  price 
+  price,
+  toCity,
+  eventType
 }: BookingModalProps) => {
   return (
     <Dialog open={isOpen} onOpenChange={onOpenChange}>
@@ -34,6 +38,8 @@ export const BookingModal = ({
         <BookingForm 
           packageTitle={packageTitle} 
           price={price} 
+          toCity={toCity}
+          eventType={eventType}
           onCancel={() => onOpenChange(false)} 
         />
       </DialogContent>

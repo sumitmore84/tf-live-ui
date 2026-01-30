@@ -2,8 +2,9 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { MapPin, Users, CalendarDays, Wallet } from "lucide-react";
+import { MapPin, Users, CalendarDays, Wallet, ArrowLeft } from "lucide-react";
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
 async function fetchItinerary(params: any) {
   try {
@@ -63,9 +64,9 @@ export default function ItineraryPage({ searchParams }: ItineraryPageProps) {
     );
   }
   const total = data.days.reduce((sum: number, day: any) => sum + day.dayTotal, 0);
-  
-  return (
+    return (
     <div className="container mx-auto max-w-4xl py-10 px-4">
+      
       <header className="mb-10 text-center">
         <h1 className="text-4xl font-bold tracking-tight mb-4">Your Custom Trip</h1>
         <div className="flex flex-wrap justify-center gap-4 text-sm text-muted-foreground">

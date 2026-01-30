@@ -97,6 +97,8 @@ export default async function PackageDetailPage(props: PackagePageProps) {
                                 <BookNowButton
                                     packageTitle={pkg.title}
                                     price={pkg.current_price || 0}
+                                    toCity={pkg.city}
+                                    eventType={pkg.category}
                                 />
                                 <AuthenticatedItinerary toCity={pkg.city} eventType={pkg.category}/>
                             </div>  
