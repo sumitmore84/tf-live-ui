@@ -38,10 +38,10 @@ export default function Footer() {
           <div>
             <h3 className="font-semibold text-foreground mb-4">Explore Events</h3>
             <ul className="space-y-2 text-sm text-muted-foreground">
-              <li><Link href="/category/sports" className="hover:text-primary transition-colors">Sports & Cricket</Link></li>
-              <li><Link href="/category/music" className="hover:text-primary transition-colors">Music & Concerts</Link></li>
-              <li><Link href="/category/racing" className="hover:text-primary transition-colors">Grand Prix Racing</Link></li>
-              <li><Link href="/category/festivals" className="hover:text-primary transition-colors">Global Festivals</Link></li>
+              <li><Link href="/search" className="hover:text-primary transition-colors">Sports & Cricket</Link></li>
+              <li><Link href="/search" className="hover:text-primary transition-colors">Music & Concerts</Link></li>
+              <li><Link href="/search" className="hover:text-primary transition-colors">Grand Prix Racing</Link></li>
+              <li><Link href="/search" className="hover:text-primary transition-colors">Global Festivals</Link></li>
             </ul>
           </div>
 

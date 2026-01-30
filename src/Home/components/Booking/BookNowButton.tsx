@@ -33,7 +33,7 @@ export const BookNowButton = ({ packageTitle, price }: BookNowButtonProps) => {
     <>
       <Button 
         onClick={handleBookClick} 
-        className="w-full text-lg h-12 bg-[#353535] hover:bg-[#121212] cursor-pointer"
+        className="w-full text-lg h-10 bg-[#353535] hover:bg-[#121212] cursor-pointer"
       >
         Book Now
       </Button>
