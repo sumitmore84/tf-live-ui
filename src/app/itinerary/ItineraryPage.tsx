@@ -57,6 +57,8 @@ export default function ItineraryPage({ searchParams }: ItineraryPageProps) {
       </div>
     );
   }
+  const total = data.days.reduce((sum: number, day: any) => sum + day.dayTotal, 0);
+  
   return (
     <div className="container mx-auto max-w-4xl py-10 px-4">
       <header className="mb-10 text-center">
@@ -66,7 +68,7 @@ export default function ItineraryPage({ searchParams }: ItineraryPageProps) {
           <div className="flex items-center gap-1"><CalendarDays className="h-4 w-4" /> {data.summary.totalDays} Days</div>
           <div className="flex items-center gap-1"><Users className="h-4 w-4" /> {data.summary.travelers} Travelers</div>
           <Badge variant="secondary" className="text-primary">
-            Total Est: ₹{data.summary.grandTotal.toLocaleString()}
+            Total Est: ₹{total.toLocaleString()}
           </Badge>
         </div>
       </header>

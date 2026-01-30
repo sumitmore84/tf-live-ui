@@ -17,6 +17,11 @@ export const metadata: Metadata = {
     template: "%s | TF Live",
   },
   description: "Discover and book amazing travel experiences with live artists",
+  icons: {
+    icon: '/logo.png',
+    shortcut: '/logo.png',
+    apple: '/logo.png',
+  },
   // ... rest of your metadata
 };
 
