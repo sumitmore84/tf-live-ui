@@ -79,7 +79,6 @@ const SearchBar = ({events}: SearchBarProps) => {
       return
     }
     setShowError(false)
-    console.log("Searching for:", { category, destination, date })
     // Implement actual search logic here
     const params = new URLSearchParams()
     if (category) params.set('category', category)

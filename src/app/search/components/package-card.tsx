@@ -53,7 +53,6 @@ function getTravelDateRange(startDate: string): string {
 }
 
 export function PackageCard({ pkg }: PackageCardProps) {
-  console.log("Price", pkg.id);
   return (
     <div className="group flex flex-col overflow-hidden rounded-xl border border-border bg-card shadow-sm transition-all duration-200 hover:shadow-md sm:flex-row">
       {/* Image */}

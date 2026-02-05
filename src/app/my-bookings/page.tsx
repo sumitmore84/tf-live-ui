@@ -29,7 +29,6 @@ export default function MyBookingsPage() {
   const [error, setError] = useState<string | null>(null)
   const { user } = useAuth()
 
-  console.log("my bookings ",bookings);
   useEffect(() => {
     fetchBookings()
   }, [user])

@@ -146,7 +146,7 @@ export function SearchHeader({
           </div>
 
           {/* Search Button */}
-          <Button className="rounded-xl px-6 py-2.5 font-medium">
+          <Button className="hidden rounded-xl px-6 py-2.5 font-medium">
             <Search className="mr-2 h-4 w-4" />
             Search
           </Button>

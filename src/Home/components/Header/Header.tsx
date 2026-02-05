@@ -23,7 +23,7 @@ const Header = () => {
     : "User";
 
   return (
-    <nav className="flex items-center justify-between px-6 py-4 bg-white shadow-sm md:px-16">
+    <nav className="flex sticky items-center justify-between px-6 py-4 bg-white shadow-sm md:px-16">
       {/* Logo */}
       <div className="flex items-center gap-2">
         <Link href="/" className="relative w-12 h-12">
